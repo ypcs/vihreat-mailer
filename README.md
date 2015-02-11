@@ -23,4 +23,5 @@ Sivupohjan muokkaaminen tyylien osalta tapahtuu tiedoston `styles.sass` kautta j
 
 ## Dependencies
 
-    apt-get install bundler ruby-sass
+    apt-get install bundler
+    bundle install
