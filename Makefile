@@ -1,3 +1,6 @@
+S3_BUCKET ?=
+S3_PREFIX ?=
+
 JEKYLL_BIN ?= /usr/bin/jekyll
 SASS_BIN ?= /usr/bin/sass
 
@@ -60,8 +63,8 @@ build: clean $(HTML_LAYOUT_DEST) inline-template
 _site/%.inline.html: _site/%.html
 	python $(INLINE_TOOL) -i $< -o $@
 
-publish-%:
-	echo $(HTML_SOURCES)
+publish: build
+	s3cmd sync _site/* s3://$(S3_BUCKET)/$(S3_PREFIX)/
 
 #$(HTML_INLINE_DEST):	$(HTML_DEST)
 #	python cssinline.py -i $(HTML_DEST) -o $(HTML_INLINE_DEST)
