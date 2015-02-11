@@ -1,0 +1,6 @@
+paths:
+  logo: images/logo.png
+
+exclude:
+    - Makefile
+    - cssinline.py

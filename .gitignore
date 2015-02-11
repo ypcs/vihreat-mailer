@@ -3,5 +3,5 @@
 .sass-cache
 *.css
 *.css.map
-template.html
-inline.template.html
+_layouts/default.html
+_site
