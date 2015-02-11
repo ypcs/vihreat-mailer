@@ -43,6 +43,7 @@ help:
 clean:
 	@echo Remove compiled files
 	rm -f $(STYLES_DEST) $(STYLES_DEST).map $(HTML_DEST) inline.$(HTML_DEST)
+	rm -rf $(SITE_DIR)
 
 $(LAYOUT_DIR):
 	mkdir -p $(LAYOUT_DIR)
