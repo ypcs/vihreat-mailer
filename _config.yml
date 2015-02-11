@@ -7,3 +7,16 @@ exclude:
     - Makefile
     - cssinline.py
     - tmp
+    - Gemfile
+
+mini_magick:
+    thumbnail:
+        source: images/original
+        destination: images/thumbnail
+        resize: "100x100"
+    medium:
+        source: images/original
+        destination: images/medium
+        resize: "640x480"
+
+gems: [jekyll-minimagick]

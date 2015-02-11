@@ -19,3 +19,8 @@ Sivupohjan muokkaaminen tyylien osalta tapahtuu tiedoston `styles.sass` kautta j
 ## Työkaluja
 
  - [CSS Inliner Tool](http://templates.mailchimp.com/resources/inline-css/)
+
+
+## Dependencies
+
+    apt-get install bundler ruby-sass
