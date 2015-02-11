@@ -3,9 +3,10 @@ layout: default
 title: Trallaa - Vihreä kirje X/2015
 ---
 
-# Eka juttu
 ![Lasse Miettinen](../../../images/lasse.jpg)
 *Kuvateksti heti kuvaa seuraavalle riville.*
+
+# Eka juttu
 
 > Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus scelerisque ullamcorper lacus in laoreet. Aliquam erat volutpat. Vestibulum at volutpat dui. Aenean id neque sit amet dui finibus auctor sit amet et diam. In libero nisi, ullamcorper ut nisi a, laoreet tempor arcu. 
 

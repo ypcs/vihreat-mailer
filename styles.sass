@@ -1,7 +1,7 @@
 // Tyylit uutiskirjepohjaa varten
 
 $width: 600px
-$font_size: 10.5pt
+$font_size: 10pt
 $padding: $font_size
 $image_max_width: $width - ($padding * 2)
 $border_width: 3px
@@ -29,6 +29,7 @@ h1, h2, h3, h4, h5, h6
 
 h1
   font-size: $font_size * 2
+  text-transform: uppercase
   clear: both
 
 h2, h3, h4, h5, h6
@@ -46,19 +47,28 @@ a
 a:hover
   text-decoration: underline
 
+hr
+  border-left: none
+  border-right: none
+  border-bottom: none
+  border-top: ($border_width * 2) solid $color_vihreat
+  background: $color_background
+  margin: $padding 0 (-$border_width) 0
+  padding: 0
+  height: $font_size
+
 #page
   max-width: $width
-  margin-left: auto
-  margin-right: auto
+  margin: $padding auto $padding auto
   background: $color_article_background
 
   h1, h2, h3, h4, h5, h6, p
     padding: (0.3 * $padding) ($padding) (0.5 * $padding) ($padding)
 
-  h1
-    border-top: $font_size solid $color_background
+  
 
   img
+    margin-top: $padding
     max-width: $image_max_width
 
   img.small
@@ -78,6 +88,9 @@ a:hover
       margin: 0 (0.25 * $padding) 0 (0.25 * $padding)
       border-top: none
       font-size: 1.8 * $font-size
+
+    hr
+      margin-top: 0
 
   div.footer
     border-top: $font-size solid $color_background
@@ -100,7 +113,6 @@ header, div#header
     #site-logo
       width: 594px
       height: 50px
-
 
 nav, div.nav
   font-size: 0.65 * $font_size
@@ -128,11 +140,7 @@ nav, div.nav
         text-decoration: none
         color: $color_article_background
 
-hr
-  border: $border_width solid $color_vihreat
-  margin: 0 0 (-$border_width) 0
-  padding: 0
-  height: 1
+
 
 em
   font-style: italic
