@@ -13,8 +13,6 @@ from HTMLParser import HTMLParser
 
 _ = lambda x: x
 
-SERVICE_URL = 'http://templates.mailchimp.com/resources/inline-css/'
-REGEXP = r'<textarea class="form-area">(.*)</textarea>'
 #IMAGES_REGEXP = r'<img[^>]{0,}src="(.*)"[^>]{0,}>'
 IMAGES_REGEXP = r'<img[^>]{0,}src="([^"]*)"[^>]{0,}>'
 
@@ -28,27 +26,7 @@ class InlinePacker(object):
         return open(filename, 'r').read()
 
     def convert_to_inline(self, html):
-        # name = html
-        url = SERVICE_URL
-        headers = {
-            'User-Agent': 'Mozilla/5.0',
-        }
-        data = urllib.urlencode({
-            'html': html,
-        })
-        req = urllib2.Request(url, data, headers)
-        response = urllib2.urlopen(req)
-        content = response.read()
-
-        p = re.compile(REGEXP, re.MULTILINE + re.DOTALL)
-
-        matches = p.findall(content)
-
-        if len(matches) == 0:
-            return None
-
-        parser = HTMLParser()
-        return parser.unescape(unicode(matches[0], 'utf-8'))
+        return html
 
     def base64_file(self, filename, first=True):
         if not os.path.exists(filename):
@@ -81,10 +59,8 @@ class InlinePacker(object):
 def main(args):
     inl = InlinePacker(path=os.path.abspath(os.path.dirname(args.infile)))
     content = inl.read(args.infile)
-    inline = inl.convert_to_inline(content)
 
-
-    inline = inl.images_inline(inline)
+    inline = inl.images_inline(content)
 
     with open(args.outfile, 'w') as ofile:
         ofile.write(inline.encode('utf-8'))

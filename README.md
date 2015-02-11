@@ -16,11 +16,6 @@ joka kääntää valmiin HTML-tiedoston. Tiedosto löytyy polusta `_site/2015/05
 Sivupohjan muokkaaminen tyylien osalta tapahtuu tiedoston `styles.sass` kautta ja HTML-pohjan tiedostosta `_layouts/_default.html`.
 
 
-## Työkaluja
-
- - [CSS Inliner Tool](http://templates.mailchimp.com/resources/inline-css/)
-
-
 ## Dependencies
 
     apt-get install bundler
