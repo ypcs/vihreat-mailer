@@ -64,7 +64,7 @@ _site/%.inline.html: _site/%.html
 	python $(INLINE_TOOL) -i $< -o $@
 
 publish: build
-	s3cmd sync _site/* s3://$(S3_BUCKET)/$(S3_PREFIX)/
+	s3cmd sync _site/* s3://$(S3_BUCKET)/$(S3_PREFIX)/$(shell date %Y%m%d)/
 
 #$(HTML_INLINE_DEST):	$(HTML_DEST)
 #	python cssinline.py -i $(HTML_DEST) -o $(HTML_INLINE_DEST)
