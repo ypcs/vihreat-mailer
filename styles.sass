@@ -48,19 +48,31 @@ a:hover
   background: $color_article_background
 
   h1, h2, h3, h4, h5, h6, p
-    padding: (0.25 * $padding) ($padding) (0.5 * $padding) ($padding)
+    padding: (0.3 * $padding) ($padding) (0.5 * $padding) ($padding)
 
   h1
     border-top: $font_size solid $color_background
 
   img
     max-width: $image_max_width
-  
+
+  img.small
+    max-width: $image_max_width * 0.5
+
+  .left
+    float: left
+    margin: 0 $padding $padding 0
+
+  .right
+    float: right
+    margin: 0 0 $padding $padding
+
   div.site-title
     h1
       text-transform: uppercase
-      margin-top: 0
+      margin: 0 (0.25 * $padding) 0 (0.25 * $padding)
       border-top: none
+      font-size: 1.8 * $font-size
 
   div.footer
     border-top: $font-size solid $color_background

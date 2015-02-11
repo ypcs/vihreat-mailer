@@ -5,7 +5,7 @@ title: Trallaa - Vihreä kirje X/2015
 
 # Eka juttu
 ![Lasse Miettinen](../../../images/lasse.jpg)
-Lorem ipsumia
+*Kuvateksti heti kuvaa seuraavalle riville.*
 
 > Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus scelerisque ullamcorper lacus in laoreet. Aliquam erat volutpat. Vestibulum at volutpat dui. Aenean id neque sit amet dui finibus auctor sit amet et diam. In libero nisi, ullamcorper ut nisi a, laoreet tempor arcu. 
 
@@ -20,8 +20,8 @@ Proin eu enim sed ligula convallis pharetra. Sed ligula mauris, tincidunt eu ele
 -------------------------------------------------------------------------
 
 # Toka juttu
-![pipo](../../../images/pipo.jpg)
-Lipsumia jälleen
+<img src="../../../images/pipo.jpg" alt="Pipo" class="small left"/>
+*Tässä kuvassa hieno pipo*
 
 
 Vestibulum egestas urna enim, ut viverra sapien vehicula non. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean a metus a neque sagittis aliquam. Donec id vehicula diam. Maecenas at nisi at nibh feugiat molestie quis eget lectus. Suspendisse potenti. Mauris tempus ultrices tortor at consectetur. Mauris laoreet nec sapien eget dictum. Praesent faucibus augue nisl, ac ultrices orci ultrices in. Sed hendrerit diam a nunc tempus ultricies. Etiam tincidunt euismod auctor. Proin at metus massa. Nulla nec massa eget ante scelerisque posuere viverra nec ligula. Vestibulum semper pretium nisi. Etiam tortor nulla, faucibus laoreet odio at, molestie volutpat orci. Quisque lacus ipsum, facilisis id risus eget, lacinia feugiat neque.
