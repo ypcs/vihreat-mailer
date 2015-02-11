@@ -18,6 +18,8 @@ HTML_REPLACE_STRING = <!-- #STYLES# -->
 
 HTML_SOURCES = $(wildcard *.html)
 
+TIMESTAMP = $(shell date +%Y%m%d%H%M)
+
 ifeq ($(OS),Windows_NT)
 	OPEN = start
 	DEPS = N/A
@@ -64,7 +66,7 @@ _site/%.inline.html: _site/%.html
 	python $(INLINE_TOOL) -i $< -o $@
 
 publish: build
-	s3cmd sync _site/* s3://$(S3_BUCKET)/$(S3_PREFIX)/$(shell date %Y%m%d)/
+	s3cmd sync _site/* s3://$(S3_BUCKET)/$(S3_PREFIX)/$(TIMESTAMP)/
 
 #$(HTML_INLINE_DEST):	$(HTML_DEST)
 #	python cssinline.py -i $(HTML_DEST) -o $(HTML_INLINE_DEST)
