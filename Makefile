@@ -8,20 +8,27 @@ HTML_LAYOUT_SOURCE ?= $(LAYOUT_DIR)/_default.html
 HTML_LAYOUT_DEST = $(LAYOUT_DIR)/default.html
 HTML_REPLACE_STRING = <!-- #STYLES# -->
 
-HTML_SOURCES = $(wildcard $(SITE_DIR)/**.html)
+HTML_SOURCES = $(wildcard *.html)
 
 ifeq ($(OS),Windows_NT)
 	OPEN = start
+	DEPS = N/A
 else
 	UNAME_S := $(shell uname -s)
 	ifeq ($(UNAME_S),Linux)
 		OPEN = xdg-open
+		DEPS = apt-get install jekyll ruby-sass make
 	else ifeq ($(UNAME_S),Darwin)
 		OPEN = start
+		DEPS = brew install jekyll (TODO)
 	endif
 endif
 
 all:	$(STYLES_DEST) $(HTML_DEST)	#$(HTML_INLINE_DEST)
+
+help:
+	@echo To install dependencies, run
+	@echo "     $(DEPS)"
 
 clean:
 	@echo Remove compiled files
@@ -48,7 +55,8 @@ build: clean $(HTML_LAYOUT_DEST) inline-template
 _site/%.inline.html: _site/%.html
 	python cssinline.py -i $< -o $@
 
-
+publish-%:
+	echo $(HTML_SOURCES)
 
 #$(HTML_INLINE_DEST):	$(HTML_DEST)
 #	python cssinline.py -i $(HTML_DEST) -o $(HTML_INLINE_DEST)
