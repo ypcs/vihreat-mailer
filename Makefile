@@ -22,23 +22,16 @@ TIMESTAMP = $(shell date +%Y%m%d%H%M)
 
 ifeq ($(OS),Windows_NT)
 	OPEN = start
-	DEPS = N/A
 else
 	UNAME_S := $(shell uname -s)
 	ifeq ($(UNAME_S),Linux)
 		OPEN = xdg-open
-		DEPS = apt-get install jekyll ruby-sass make
 	else ifeq ($(UNAME_S),Darwin)
 		OPEN = start
-		DEPS = brew install jekyll (TODO)
 	endif
 endif
 
 all:	$(STYLES_DEST) $(HTML_DEST)	#$(HTML_INLINE_DEST)
-
-help:
-	@echo To install dependencies, run
-	@echo "     $(DEPS)"
 
 clean:
 	@echo Remove compiled files
