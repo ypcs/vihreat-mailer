@@ -62,7 +62,23 @@ class PremailerCLI
         source_file = ARGV[0]
         target_html = ARGV[1]
         target_plain = ARGV[2]
-        puts "I: Converting #{source_file} to inline-css #{target_html} and plain-text #{target_plain}.."
+
+        if File.exist?(source_file) == false
+            puts "E: Source file '#{source_file}' doesn't exist!"
+            exit 1
+        end
+
+        if File.exist?(target_html)
+            puts "E: Target file '#{target_html} exists, exiting..."
+            exit 1
+        end
+
+        if File.exist?(target_plain)
+            puts "E: Target file '#{target_plain} exists, exiting..."
+            exit 1
+        end
+
+        puts "I: Converting '#{source_file}' to inline-css '#{target_html}' and plain-text '#{target_plain}'.."
         self.convert source_file, target_html, target_plain
     end
 end
