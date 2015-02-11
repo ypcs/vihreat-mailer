@@ -48,7 +48,7 @@ class PremailerCLI
         end
 
         premailer.warnings.each do |w|
-          puts "#{w[:message]} (#{w[:level]}) may not render properly in #{w[:clients]}"
+          puts "W: #{w[:message]} (#{w[:level]}) may not render properly in #{w[:clients]}"
         end
 
     end
@@ -62,7 +62,7 @@ class PremailerCLI
         source_file = ARGV[0]
         target_html = ARGV[1]
         target_plain = ARGV[2]
-        puts "Conveting #{source_file} to inline-css #{target_html} and plain-text #{target_plain}.."
+        puts "I: Converting #{source_file} to inline-css #{target_html} and plain-text #{target_plain}.."
         self.convert source_file, target_html, target_plain
     end
 end
