@@ -18,64 +18,73 @@ REGEXP = r'<textarea class="form-area">(.*)</textarea>'
 #IMAGES_REGEXP = r'<img[^>]{0,}src="(.*)"[^>]{0,}>'
 IMAGES_REGEXP = r'<img[^>]{0,}src="([^"]*)"[^>]{0,}>'
 
-def read(filename):
-    if filename is None or not os.path.exists(filename):
-        raise IOError(_('File not found %s'))
-    return open(filename, 'r').read()
+class InlinePacker(object):
+    def __init__(self, **kwargs):
+        self._kwargs = kwargs
 
-def convert_to_inline(html):
-    # name = html
-    url = SERVICE_URL
-    headers = {
-        'User-Agent': 'Mozilla/5.0',
-    }
-    data = urllib.urlencode({
-        'html': html,
-    })
-    req = urllib2.Request(url, data, headers)
-    response = urllib2.urlopen(req)
-    content = response.read()
+    def read(self, filename):
+        if filename is None or not os.path.exists(filename):
+            raise IOError(_('File not found %s'))
+        return open(filename, 'r').read()
 
-    p = re.compile(REGEXP, re.MULTILINE + re.DOTALL)
+    def convert_to_inline(self, html):
+        # name = html
+        url = SERVICE_URL
+        headers = {
+            'User-Agent': 'Mozilla/5.0',
+        }
+        data = urllib.urlencode({
+            'html': html,
+        })
+        req = urllib2.Request(url, data, headers)
+        response = urllib2.urlopen(req)
+        content = response.read()
 
-    matches = p.findall(content)
+        p = re.compile(REGEXP, re.MULTILINE + re.DOTALL)
 
-    if len(matches) == 0:
-        return None
+        matches = p.findall(content)
 
-    parser = HTMLParser()
-    return parser.unescape(unicode(matches[0], 'utf-8'))
+        if len(matches) == 0:
+            return None
 
-def base64_file(filename):
-    if not os.path.exists(filename):
-        raise IOError('File not found: %s' % filename)
+        parser = HTMLParser()
+        return parser.unescape(unicode(matches[0], 'utf-8'))
 
-    with open(filename, 'rb') as ofile:
-        out = base64.b64encode(ofile.read())
-    return out
+    def base64_file(self, filename, first=True):
+        if not os.path.exists(filename):
+            pth = self._kwargs.get('path', None)
+            if first and pth is not None:
+                nfile = os.path.join(pth, filename)
+                return self.base64_file(filename=nfile, first=False)
+            raise IOError('File not found: %s' % filename)
 
-def images_inline(html):
-    p = re.compile(IMAGES_REGEXP)
-    #matches = p.findall(html)
-
-    def img_b64(match):
+        with open(filename, 'rb') as ofile:
+            out = base64.b64encode(ofile.read())
+        return out
+    
+    def img_b64(self, match):
         url = match.group(1)
         if url.startswith('data:'):
             return match.group()
         tag = match.group(0)
         return tag.replace(url, 'data:%(mime)s;base64,%(data)s' % {
             'mime': mimetypes.guess_type(url)[0],
-            'data': base64_file(url)    
+            'data': self.base64_file(url)    
         })
 
-    nhtml = p.sub(img_b64, html)
-    return nhtml
+
+    def images_inline(self, html, **kwargs):
+        p = re.compile(IMAGES_REGEXP)
+        nhtml = p.sub(self.img_b64, html)
+        return nhtml
 
 def main(args):
-    content = read(args.infile)
-    inline = convert_to_inline(content)
+    inl = InlinePacker(path=os.path.abspath(os.path.dirname(args.infile)))
+    content = inl.read(args.infile)
+    inline = inl.convert_to_inline(content)
 
-    inline = images_inline(inline)
+
+    inline = inl.images_inline(inline)
 
     with open(args.outfile, 'w') as ofile:
         ofile.write(inline.encode('utf-8'))
