@@ -2,12 +2,13 @@ STYLES_SOURCE ?= styles.sass
 STYLES_DEST = styles.css
 
 LAYOUT_DIR ?= _layouts
+SITE_DIR = _site
 
 HTML_LAYOUT_SOURCE ?= $(LAYOUT_DIR)/_default.html
 HTML_LAYOUT_DEST = $(LAYOUT_DIR)/default.html
 HTML_REPLACE_STRING = <!-- #STYLES# -->
 
-#HTML_INLINE_DEST = inline.template.html
+HTML_SOURCES = $(wildcard $(SITE_DIR)/**.html)
 
 ifeq ($(OS),Windows_NT)
 	OPEN = start
@@ -43,6 +44,11 @@ inline-template: clean $(HTML_LAYOUT_DEST)
 
 build: clean $(HTML_LAYOUT_DEST) inline-template
 	jekyll build
+
+_site/%.inline.html: _site/%.html
+	python cssinline.py -i $< -o $@
+
+
 
 #$(HTML_INLINE_DEST):	$(HTML_DEST)
 #	python cssinline.py -i $(HTML_DEST) -o $(HTML_INLINE_DEST)
