@@ -12,6 +12,8 @@ $color_article_background: #fff
 $color_background: #ccddcc
 $color_vihreat: #61bf1a
 
+@import _fixes.sass
+
 html, body
   font-family: $font_default
   background: $color_background
@@ -21,13 +23,16 @@ body
 
 h1, h2, h3, h4, h5, h6
   color: $color_vihreat
-  clear: both
   margin: ($padding * 0.25) 0 ($padding * 0.25) 0
   /* margin: top right bottom left */
   font-weight: bold
 
 h1
   font-size: $font_size * 2
+  clear: both
+
+h2, h3, h4, h5, h6
+  clear: right
 
 a
   font-weight: bold
