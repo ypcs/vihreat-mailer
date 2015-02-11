@@ -60,6 +60,8 @@ def images_inline(html):
 
     def img_b64(match):
         url = match.group(1)
+        if url.startswith('data:'):
+            return match.group()
         tag = match.group(0)
         return tag.replace(url, 'data:%(mime)s;base64,%(data)s' % {
             'mime': mimetypes.guess_type(url)[0],
