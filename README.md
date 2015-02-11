@@ -1,18 +1,19 @@
 # Uutiskirjepohja
 
-## Howto
-Tyylien päivittäminen: muokkaa tiedostoa `styles.sass`.
+## Näin luot uutiskirjeen
+Ensin luo uusi tyhjä tekstitiedosto uutta uutiskirjettä varten: `_posts/2015-05-05-uusi-uutiskirjeeni.md`.
 
-HTML:n päivittäminen: muokkaa tiedostoa `_layouts/_default.html`.
+Tämän jälkeen kirjoita uutiskirjeen sisältö. Muotoilussa käytetään Markdownia, mutta mukaan voi sisällyttää myös HTML-koodia, kunhan sähköpostiohjelmien rajoitukset huomioidaan.
 
-Väliaikaistiedostojen poistaminen:
-
-    make clean
-
-Käännä SASS-tiedosto CSS:ksi ja sisällytä tyylit templateen:
+Kun pohja on valmis, tai sitä tahdotaan esikatsella, suoritetaan komento
 
     make
 
+joka kääntää valmiin HTML-tiedoston. Tiedosto löytyy polusta `_site/2015/05/05/uusi-uutiskirjeeni.html`.
+
+
+## Sivupohjan muokkaaminen
+Sivupohjan muokkaaminen tyylien osalta tapahtuu tiedoston `styles.sass` kautta ja HTML-pohjan tiedostosta `_layouts/_default.html`.
 
 
 ## Työkaluja
