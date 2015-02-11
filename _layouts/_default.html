@@ -2,65 +2,28 @@
 <html>
 	<head>
 		<meta charset="UTF-8" />
-		<title></title>
+		<title>{{ page.title }}</title>
 		<style>
 			<!-- #STYLES# -->
 		</style>
 	</head>
 	<body>
 		<div id="page">
-			<div class="article" id="header"><img alt="Vihreät - De Gröna" src="images/logo.png" style="width: 594px; height: 50px;" /></div>
-			<!--
-						<div class="nav">
-									<ul>
-												<li class="fb"><a href="#">FB</a></li>
-												<li class="tw"><a href="#">TW</a></li>
-												<li class="ig"><a href="#">IG</a></li>
-									</ul>
-						</div>
-			--><!--
-			<div class="article">
-				<h1>Sisällysluettelo</h1>
-				<ol>
-					<li><a href="#">Hyvää joulua, hyvä vihreiden jäsen</a></li>
-					<li>.....</li>
-				</ol>
-			</div>
-			-->
-			<div class="article">
-				<!--
-				--
-				-- Uutiskirjeen otsikko
-				--
-				-->
-				<h1>KIRJEEN OTSIKKO - VIHRE&Auml; KIRJE X/2015</h1>
+			<div class="" id="header">
+				<img id="site-logo" alt="Vihreät - De Gröna" src="images/logo.png"/>
 			</div>
 			
-			<!--
-			--
-			-- Artikkeli 1
-			--
-			-->
-			<div class="article">
-				<img alt="" src="images/lasse.jpg" /> <span style="color: rgb(105, 105, 105); line-height: 20.7999992370605px;">
-				<p><em>Kirjoittajan nimi t&auml;h&auml;n</em></span></p>
-				<h1>T&Auml;H&Auml;N MAHTAVA OTSIKKO</h1>
-				<p>lorem ipsum ja niin edelleen t&auml;h&auml;n tulee leip&auml;teksti&auml;</p>
-				<p><a href="http://www.vihreat.fi/blogit/lasse-miettinen/nyt-jos-koskaan">lue koko kirjoitus t&auml;st&auml;...</a></p>
-			</div>
-			
-			<div class="article minipic">
-				<img alt="" src="images/pipo.jpg"/>OTSIKKO</span>
-				<h1>OTSIKKO</h1>
-				<p>lorem ipsum ja niin edelleen t&auml;h&auml;n tulee leip&auml;teksti&auml;</p>
-				<p><span style="font-size:16px;"><a class="special" href="https://kauppa.vihreat.fi/">MINNE LINKKI VIE..</a></span></p>
+			<div class="site-title">
+				<h1>{{ page.title }}</h1>
+				<hr/>
 			</div>
 
-			<div id="footer" class="article">
-				<h2>ILOISTA VAALIKEV&Auml;TT&Auml; KAIKILLE</h2>
-				<p>Vihre&auml; kirje on vihreiden j&auml;senille ja puolueen toiminnasta kiinnostuneille tarkoitettu uutiskirje.&nbsp;.</p>
+			<div class="content">
+				{{ content }}
+			</div>
 
-				<p>Sen voit lukea my&ouml;s osoitteessa <a href="http://www.vihreat.fi/kirje">www.vihreat.fi/kirje</a>. Kirjeen tilaukset ja peruutukset hoituvat helpoiten osoitteessa <a href="http://vihreat@vihreat.fi">vihreat@vihreat.fi</a>. Osoitteenmuutoksissa ja muissa j&auml;senasioissa voit olla yhteydess&auml; osoitteeseen <a href="http://jasenasiat@vihreat.fi">jasenasiat@vihreat.fi</a></p>
+			<div class="footer">
+				<p>Vihre&auml; kirje on vihreiden j&auml;senille ja puolueen toiminnasta kiinnostuneille tarkoitettu uutiskirje. Sen voit lukea my&ouml;s osoitteessa <a href="http://www.vihreat.fi/kirje">www.vihreat.fi/kirje</a>. Kirjeen tilaukset ja peruutukset hoituvat helpoiten osoitteessa <a href="http://vihreat@vihreat.fi">vihreat@vihreat.fi</a>. Osoitteenmuutoksissa ja muissa j&auml;senasioissa voit olla yhteydess&auml; osoitteeseen <a href="http://jasenasiat@vihreat.fi">jasenasiat@vihreat.fi</a></p>
 			</div>
 		</div>
 	</body>

@@ -38,7 +38,10 @@ $(HTML_LAYOUT_DEST): $(STYLES_DEST) $(LAYOUT_DIR)
 	sed -e "/$(HTML_REPLACE_STRING)/r $(STYLES_DEST)" -e "/$(HTML_REPLACE_STRING)/d" $(HTML_LAYOUT_SOURCE) >$(HTML_LAYOUT_DEST)
 	echo "<!-- Compiled at $(shell date +%Y%m%d%H%M%S) on $(shell hostname) -->" >> $(HTML_LAYOUT_DEST)
 
-build: clean $(HTML_LAYOUT_DEST)
+inline-template: clean $(HTML_LAYOUT_DEST)
+	python cssinline.py -i $(HTML_LAYOUT_DEST) -o $(HTML_LAYOUT_DEST)
+
+build: clean $(HTML_LAYOUT_DEST) inline-template
 	jekyll build
 
 #$(HTML_INLINE_DEST):	$(HTML_DEST)
