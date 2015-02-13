@@ -1,8 +1,8 @@
 S3_BUCKET ?=
 S3_PREFIX ?=
 
-JEKYLL_BIN ?= /usr/bin/jekyll
-SASS_BIN ?= /usr/bin/sass
+JEKYLL_BIN ?= jekyll
+SASS_BIN ?= sass
 
 INLINE_TOOL = _tools/cssinline.py
 
@@ -32,6 +32,10 @@ else
 endif
 
 all:	$(STYLES_DEST) $(HTML_DEST)	#$(HTML_INLINE_DEST)
+
+depends:
+	sudo gem install bundler
+	bundler
 
 clean:
 	@echo Remove compiled files
