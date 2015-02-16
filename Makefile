@@ -72,7 +72,7 @@ publish: build
 	s3cmd sync _site/* s3://$(S3_BUCKET)/$(S3_PREFIX)/$(TIMESTAMP)/
 
 zip:
-	git archive --format=zip --output=../mailer$(shell date +%Y%m%d%H%M%S).zip master
+	git archive --format=zip --output=../mailer_$(shell date +%Y%m%d%H%M%S).zip master
 #$(HTML_INLINE_DEST):	$(HTML_DEST)
 #	python cssinline.py -i $(HTML_DEST) -o $(HTML_INLINE_DEST)
 
