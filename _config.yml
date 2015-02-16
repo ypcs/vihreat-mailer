@@ -18,5 +18,9 @@ mini_magick:
         source: images/original
         destination: images/medium
         resize: "640x480"
+    newsletter:
+        source: images/original
+        destination: images/newsletter
+        resize: "580x"
 
 gems: [jekyll-minimagick]

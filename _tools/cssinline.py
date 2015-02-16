@@ -63,7 +63,7 @@ def main(args):
     inline = inl.images_inline(content)
 
     with open(args.outfile, 'w') as ofile:
-        ofile.write(inline.encode('utf-8'))
+        ofile.write(inline)
 
 def run():
     from argparse import ArgumentParser

@@ -5,6 +5,7 @@ JEKYLL_BIN ?= jekyll
 SASS_BIN ?= sass
 
 INLINE_TOOL = _tools/cssinline.py
+PREMAILER = _tools/premailer.rb
 
 STYLES_SOURCE ?= _assets/styles.sass
 STYLES_DEST = _assets/styles.css
@@ -31,7 +32,7 @@ else
 	endif
 endif
 
-all:	$(STYLES_DEST) $(HTML_DEST)	#$(HTML_INLINE_DEST)
+all:	build
 
 depends:
 	sudo gem install bundler
@@ -54,13 +55,13 @@ $(HTML_LAYOUT_DEST): $(STYLES_DEST) $(LAYOUT_DIR)
 	sed -e "/$(HTML_REPLACE_STRING)/r $(STYLES_DEST)" -e "/$(HTML_REPLACE_STRING)/d" $(HTML_LAYOUT_SOURCE) >$(HTML_LAYOUT_DEST)
 	echo "<!-- Compiled at $(shell date +%Y%m%d%H%M%S) on $(shell hostname) -->" >> $(HTML_LAYOUT_DEST)
 
-inline-template: clean $(HTML_LAYOUT_DEST)
-	python $(INLINE_TOOL) -i $(HTML_LAYOUT_DEST) -o $(HTML_LAYOUT_DEST)
-
-build: clean $(HTML_LAYOUT_DEST) inline-template
+build: clean $(HTML_LAYOUT_DEST)
 	$(JEKYLL_BIN) build
 
 _site/%.inline.html: _site/%.html
+	ruby $(PREMAILER) $< $@ $@.txt
+	
+_site/%.mail.html: _site/%.inline.html
 	python $(INLINE_TOOL) -i $< -o $@
 
 publish: build
