@@ -60,9 +60,13 @@ build: clean $(HTML_LAYOUT_DEST)
 
 _site/%.inline.html: _site/%.html
 	ruby $(PREMAILER) $< $@ $@.txt
-	
-_site/%.mail.html: _site/%.inline.html
-	python $(INLINE_TOOL) -i $< -o $@
+	python $(INLINE_TOOL) -i $@ -o $@.mail.html
+
+	@echo
+	@echo "HTML (original, no inline styles): $<"
+	@echo "HTML (inline styles):              $@"
+	@echo "Plain text:                        $@.txt"
+	@echo "HTML (inline images):              $@.mail.html"
 
 publish: build
 	s3cmd sync _site/* s3://$(S3_BUCKET)/$(S3_PREFIX)/$(TIMESTAMP)/
