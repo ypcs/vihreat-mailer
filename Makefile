@@ -14,6 +14,7 @@ LAYOUT_DIR ?= _layouts
 SITE_DIR = _site
 
 SOURCE_FILES = $(wildcard _posts/*.txt)
+SOURCES_FILES_MD = $(SOURCE_FILES:.txt=.md)
 
 HTML_LAYOUT_SOURCE ?= $(LAYOUT_DIR)/_default.html
 HTML_LAYOUT_DEST = $(LAYOUT_DIR)/default.html
@@ -60,9 +61,10 @@ $(HTML_LAYOUT_DEST): $(STYLES_DEST) $(LAYOUT_DIR)
 
 _posts/%.md: _posts/%.txt
 	awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' $< > $@
+	rm -f $<
 
-convert-txt-to-markdown:
-	$(foreach var,$(SOURCE_FILES), $(MAKE) $(var))
+convert-txt-to-markdown: $(SOURCE_FILES)
+	$(foreach var,$(SOURCE_FILES_MD), $(MAKE) $(var))
 
 build: clean $(HTML_LAYOUT_DEST) convert-txt-to-markdown
 	$(JEKYLL_BIN) build
