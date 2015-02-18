@@ -13,11 +13,14 @@ STYLES_DEST = _assets/styles.css
 LAYOUT_DIR ?= _layouts
 SITE_DIR = _site
 
+SOURCE_FILES = $(wildcard _posts/*.txt)
+
 HTML_LAYOUT_SOURCE ?= $(LAYOUT_DIR)/_default.html
 HTML_LAYOUT_DEST = $(LAYOUT_DIR)/default.html
 HTML_REPLACE_STRING = <!-- #STYLES# -->
 
-HTML_SOURCES = $(wildcard *.html)
+HTML_SOURCES = $(shell find _site/ -type f -name *.html)
+HTML_INLINE_SOURCES = $(HTML_SOURCES:.html=.inline.html)
 
 TIMESTAMP = $(shell date +%Y%m%d%H%M)
 
@@ -55,8 +58,15 @@ $(HTML_LAYOUT_DEST): $(STYLES_DEST) $(LAYOUT_DIR)
 	sed -e "/$(HTML_REPLACE_STRING)/r $(STYLES_DEST)" -e "/$(HTML_REPLACE_STRING)/d" $(HTML_LAYOUT_SOURCE) >$(HTML_LAYOUT_DEST)
 	echo "<!-- Compiled at $(shell date +%Y%m%d%H%M%S) on $(shell hostname) -->" >> $(HTML_LAYOUT_DEST)
 
-build: clean $(HTML_LAYOUT_DEST)
+_posts/%.md: _posts/%.txt
+	awk 'NR==1{sub(/^\xef\xbb\xbf/,"")}{print}' $< > $@
+
+convert-txt-to-markdown:
+	$(foreach var,$(SOURCE_FILES), $(MAKE) $(var))
+
+build: clean $(HTML_LAYOUT_DEST) convert-txt-to-markdown
 	$(JEKYLL_BIN) build
+	rm -f _site/index.html
 
 _site/%.inline.html: _site/%.html
 	ruby $(PREMAILER) $< $@ $@.txt
@@ -67,6 +77,8 @@ _site/%.inline.html: _site/%.html
 	@echo "HTML (inline styles):              $@"
 	@echo "Plain text:                        $@.txt"
 	@echo "HTML (inline images):              $@.mail.html"
+
+inline: build $(HTML_INLINE_SOURCES)
 
 publish: build
 	s3cmd sync _site/* s3://$(S3_BUCKET)/$(S3_PREFIX)/$(TIMESTAMP)/

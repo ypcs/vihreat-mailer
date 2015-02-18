@@ -16,7 +16,7 @@ Se alleviivaa tätä hetkeä ja sen tärkeyttä - tässä ja nyt, tänä kevätt
 [Lue koko Lassen kirjoitus...](http://xx)
 
 
-![Puheenjohtaja Ville Niinistö, puoluesihteeri Lasse Miettinen, viestintä-suunnittelija Anita Nousiainen sekä helsinkiläiset ehdokkaamme Ozan Yanar ja Emma Kari uunituoreen kampanja-julisteen kanssa.](../../../images/newsletter/koulujuliste.jpg)
+![Puheenjohtaja Ville Niinistö, puoluesihteeri Lasse Miettinen, viestintä-suunnittelija Anita Nousiainen sekä helsinkiläiset ehdokkaamme Ozan Yanar ja Emma Kari uunituoreen kampanja-julisteen kanssa.](../../../images/newsletter/koulujuliste_new.jpg)
 
 -------------------------------------------------------------------------
 
