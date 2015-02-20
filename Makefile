@@ -18,8 +18,8 @@ SOURCES_FILES_MD = $(SOURCE_FILES:.txt=.md)
 
 HTML_LAYOUT_SOURCE ?= $(LAYOUT_DIR)/_default.html
 HTML_LAYOUT_DEST = $(LAYOUT_DIR)/default.html
-HTML_REPLACE_STRING = <!-- #STYLES# -->
-INK_REPLACE_STRING = <!-- #INK -->
+HTML_REPLACE_STRING = <!-- STYLES -->
+INK_REPLACE_STRING = <!-- INK -->
 INK_STYLES = _assets/ink.css
 
 HTML_SOURCES = $(shell find _site/ -type f -name *.html)
