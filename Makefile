@@ -19,6 +19,8 @@ SOURCES_FILES_MD = $(SOURCE_FILES:.txt=.md)
 HTML_LAYOUT_SOURCE ?= $(LAYOUT_DIR)/_default.html
 HTML_LAYOUT_DEST = $(LAYOUT_DIR)/default.html
 HTML_REPLACE_STRING = <!-- #STYLES# -->
+INK_REPLACE_STRING = <!-- #INK -->
+INK_STYLES = _assets/ink.css
 
 HTML_SOURCES = $(shell find _site/ -type f -name *.html)
 HTML_INLINE_SOURCES = $(HTML_SOURCES:.html=.inline.html)
@@ -56,7 +58,8 @@ $(STYLES_DEST):
 
 $(HTML_LAYOUT_DEST): $(STYLES_DEST) $(LAYOUT_DIR)
 	@echo Add CSS styles to HTML template
-	sed -e "/$(HTML_REPLACE_STRING)/r $(STYLES_DEST)" -e "/$(HTML_REPLACE_STRING)/d" $(HTML_LAYOUT_SOURCE) >$(HTML_LAYOUT_DEST)
+	sed -e "/$(INK_REPLACE_STRING)/r $(INK_STYLES)" -e "/$(INK_REPLACE_STRING)/d" $(HTML_LAYOUT_SOURCE) >$(HTML_LAYOUT_SOURCE).tmp
+	sed -e "/$(HTML_REPLACE_STRING)/r $(STYLES_DEST)" -e "/$(HTML_REPLACE_STRING)/d" $(HTML_LAYOUT_SOURCE).tmp >$(HTML_LAYOUT_DEST)
 	echo "<!-- Compiled at $(shell date +%Y%m%d%H%M%S) on $(shell hostname) -->" >> $(HTML_LAYOUT_DEST)
 
 _posts/%.md: _posts/%.txt
