@@ -5,3 +5,4 @@
 *.css.map
 _layouts/default.html
 _site
+*.tmp

@@ -12,7 +12,6 @@ $color_article_background: #fff
 $color_background: #ccddcc
 $color_vihreat: #61bf1a
 
-@import _assets/_fixes.sass
 
 html, body
   font-family: $font_default
@@ -44,8 +43,6 @@ a
     font-weight: bold
     padding: $padding * 0.5
 
-a:hover
-  text-decoration: underline
 
 hr
   border-left: none
@@ -56,53 +53,8 @@ hr
   margin: $padding 0 (-$border_width) 0
   padding: 0
   height: $font_size
-
-#page
-  max-width: $width
-  margin: $padding auto $padding auto
-  background: $color_article_background
-
-  h1, h2, h3, h4, h5, h6, p
-    padding: (0.3 * $padding) ($padding) (0.5 * $padding) ($padding)
-
-  
-
-  img
-    margin-top: $padding
-    max-width: $image_max_width
-
-  img.small
-    max-width: $image_max_width * 0.5
-
-  .left
-    float: left
-    margin: 0 $padding $padding 0
-
-  .right
-    float: right
-    margin: 0 0 $padding $padding
-
-  div.site-title
-    h1
-      text-transform: uppercase
-      margin: 0 (0.25 * $padding) 0 (0.25 * $padding)
-      border-top: none
-      font-size: 1.8 * $font-size
-
-    hr
-      margin-top: 0
-
-  div.footer
-    border-top: $font-size solid $color_background
-    font-size: 0.85 * $font_size
-    padding: $padding
-
-  blockquote
-    p
-      padding-left: 0
-      font-weight: bold
     
-header, div#header
+.header, .header table
   background: $color_vihreat
   margin: 0
   padding-top: 10px
@@ -110,40 +62,12 @@ header, div#header
   img
     max-width: 100%
 
-    #site-logo
-      width: 594px
-      height: 50px
-
-nav, div.nav
-  font-size: 0.65 * $font_size
-  background: $color_vihreat
-  color: $color_article_background
-  margin: 0
-  padding: 0.25 * $padding
-
-  ul
-    margin: 0
-    text-align: center
-
-    li
-      margin: 0
-      list-style-type: none
-      display: inline-block
-      border: 2px solid $color_article_background
-      padding: (0.5 * $padding) (0.25 * $padding) (0.5 * $padding) (0.25 * $padding)
-      border-radius: 1.25em
-      background: transparent
-      width: 20px
-      font-weight: bold
-
-      a
-        text-decoration: none
-        color: $color_article_background
-
-
-
 em
   font-style: italic
 
 strong
   font-weight: bold
+
+.body
+  .row
+    background: #fff
