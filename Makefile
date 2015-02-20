@@ -46,7 +46,7 @@ depends:
 
 clean:
 	@echo Remove compiled files
-	rm -f $(STYLES_DEST) $(STYLES_DEST).map $(HTML_DEST) inline.$(HTML_DEST)
+	rm -f $(STYLES_DEST) $(STYLES_DEST).map $(HTML_DEST) inline.$(HTML_DEST) $(LAYOUT_DIR)/*.tmp
 	rm -rf $(SITE_DIR)
 
 $(LAYOUT_DIR):
