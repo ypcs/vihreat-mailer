@@ -4,8 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width"/>
 
-    <link rel="stylesheet" href="ink.css"> <!-- For testing only -->
-
+    <title>{{ page.title }} - {{ site.title }}</title>
     <style type="text/css">
       
       /* Ink styles go here in production */
@@ -23,7 +22,60 @@
         <td class="center" align="center" valign="top">
           <center>
 
-          <!-- Email Content -->
+            <table class="row header">
+              <tr>
+                <td class="center" align="center">
+                  <center>
+                    <table class="container">
+                      <tr>
+                        <td class="wrapper last">
+                          <table class="twelve columns">
+                            <tr>
+                              <td class="twelve columns">
+                                <img id="site-logo" alt="Vihreät - De Gröna" src="../../../images/newsletter/logo.png"/>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </center>
+                </td>
+              </tr>
+            </table>
+
+            <table class="container">
+              <tr>
+                <td>
+                  <table class="row">
+                    <tr>
+                      <td class="wrapper last">
+                        <table class="twelve columns">
+                          <tr>
+                            <td>{{ content }}</td>
+                            <td class="expander"></td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+
+                  <table class="row footer">
+                    <tr>
+                      <td class="wrapper">
+                        <table class="twelve columns">
+                          <tr>
+                            <td class="left-text-pad">
+                              <p>Vihre&auml; kirje on vihreiden j&auml;senille ja puolueen toiminnasta kiinnostuneille tarkoitettu uutiskirje. Sen voit lukea my&ouml;s osoitteessa <a href="http://www.vihreat.fi/kirje">www.vihreat.fi/kirje</a>. Kirjeen tilaukset ja peruutukset hoituvat helpoiten osoitteessa <a href="http://vihreat@vihreat.fi">vihreat@vihreat.fi</a>. Osoitteenmuutoksissa ja muissa j&auml;senasioissa voit olla yhteydess&auml; osoitteeseen <a href="http://jasenasiat@vihreat.fi">jasenasiat@vihreat.fi</a></p>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
 
           </center>
         </td>
